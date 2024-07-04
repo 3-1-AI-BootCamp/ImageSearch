@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    {% load custom_tags %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/globals.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+<body>
+    <div class="search" id="search">
+        <div class="search-container">
+            {% comment %} 이미지 출력 섹션 {% endcomment %}
+            <div class="overlap">
+                <div class="rectangle"></div>
+                <div class="group">
+
+                    <div class="options">
+                        <div class="popular">Popular 여기는</div>
+                        <div class="discussed">Discussed 나중에</div>
+                        <div class="recent">Recent 고려</div>
+                    </div>
+
+                    {% comment %} <div id="img_component_wrapper">
+                        <div id="component_1">
+                            <img class="img" src="{% static 'img/group-3.png' %}" />
+                            <img class="img-2" src="{% static 'img/unsplash-gkxkby-c-dk.png' %}" />
+                            <p class="text-wrapper-4">What a cat eats for sure</p>
+                            <div class="text-wrapper-5">3 m read Time</div>
+                        </div>
+                        <div id="component_2">
+                            <img class="img" src="{% static 'img/group-3.png' %}" />
+                            <img class="unsplash-gkxkby-c-dk" src="{% static 'img/unsplash-gkxkby-c-dk-2.png' %}" />
+                            <p class="text-wrapper-4">How to create nostalgic Patterns?</p>
+                            <div class="text-wrapper-5">10 m read Time</div>
+                        </div>
+                        <div id="component_3">
+                            <img class="img" src="{% static 'img/group-3.png' %}" />
+                            <img class="img-2" src="{% static 'img/unsplash-4hbj-eymz1o.png' %}" />
+                            <div class="text-wrapper-4">Learn programming skills</div>
+                            <div class="text-wrapper-5">15 m read Time</div>
+                        </div>
+                    </div> {% endcomment %}
+
+
+                    <div id="img_component_wrapper">
+                        {% for idx, row in response.items %}
+                            <div id="component_{{ forloop.counter }}">
+                                <img class="img" src="{% static 'img/group-3.png' %}" />
+                                {% if row.Image %}
+                                    <img class="img-2" src="data:image/jpeg;base64,{{ row.Image|b64encode }}" />
+                                {% endif %}
+                                <p class="text-wrapper-4">{{ row.ArtTitle_kor }}</p>
+                                <div class="text-wrapper-5">{{ row.ArtistName_kor }}</div>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+
+                </div>
+                <div class="hot" id="hot">HOT</div>
+            </div>
+
+            {% comment %} 검색 바 {% endcomment %}
+            <div class="overlap-group-wrapper">
+                <form action="{% url 'client_request' %}" method="post" class="overlap-group">
+                    <div class="search-button">
+                        <button type="submit" class="text-wrapper-6">SEARCH</button>
+                    </div>
+                    
+                    {% comment %} <div class="search-whatever-you-wrapper" id="search-whatever-you-wrapper">
+                        <p class="search-whatever-you">
+                            <span class="span">Search whatever you wan</span>
+                            <span class="text-wrapper-7">t...</span>
+                        </p>
+                    </div> {% endcomment %}
+                    {% csrf_token %}
+                    <div class="search-input-wrapper">
+                        <input type="text" name="input_text" class="search-input" placeholder="Search whatever..." />
+                    </div>
+                </form>
+            </div>
+
+            <p class="search-IT"><span class="text-wrapper-8">Search.</span> <span class="text-wrapper-9">ART</span></p>
+
+            <div class="group-7" id="group-7">
+                <div class="frame-2" id="frame-2">
+                    <img class="img-3" src="{% static 'img/user.svg' %}" />
+                    <div class="login">LOGIN</div>
+                </div>
+                <div class="text-wrapper-10">Write a sentence about the work of art you want to find!</div>
+                <div class="frame-3" id="frame-3">
+                    <img class="img-3" src="{% static 'img/settings.svg' %}" />
+                    <div class="login">LOGIN</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

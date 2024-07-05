@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Art search</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styleArt.css' %}">
+</head>
+<body>
+    
+    {% comment %} <form action="/front/process/" method="post">
+        {% csrf_token %}
+        <div class="search-container">
+            <div id="inputBox">
+                <input type="text" id="input_text" placeholder='Input...' name="input_text" required>
+                <button type="submit" id='search-button'>Enter</button>
+            </div>
+            <div id="imgBox">
+                img
+                {% if data %}
+                <h2>처리된 결과:</h2>
+                <p>{{ data }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </form> {% endcomment %}
+
+    <form action="/front/process/" method="post" class="search-container">
+        {% csrf_token %}
+        <div id="inputBox">
+            <input type="text" id="input_text" placeholder='Input...' name="input_text" required>
+            <button type="submit" id='search-button'>Enter</button>
+        </div>
+        <div id="imgBox">
+            img
+            {% if data %}
+            <h2>처리된 결과:</h2>
+            <p>{{ data }}</p>
+            {% endif %}
+        </div>
+    </form>
+
+    
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!-- modelServer/templates/art_2d_list.html -->
+
+{% load custom_tags %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Art 2D List</title>
+</head>
+<body>
+    <h1>Art 2D List</h1>
+    <ul>
+        {% for art in art_2d_list %}
+            <li>
+                ID: {{ art.id }}<br>
+                Image File Name: {{ art.imageFileName }}<br>
+                Main Category: {{ art.MainCategory }}<br>
+                Sub Category: {{ art.SubCategory }}<br>
+                Middle Category: {{ art.MiddleCategory }}<br>
+                Class (Korean): {{ art.Class_kor }}<br>
+                Art Title (Korean): {{ art.ArtTitle_kor }}<br>
+                Artist Name (Korean): {{ art.ArtistName_kor }}<br>
+                Image: 
+                {% if art.Image %}
+                    <img src="data:image/jpeg;base64,{{ art.Image|b64encode }}" alt="{{ art.ArtTitle_kor }}" />
+                {% else %}
+                    No image available
+                {% endif %}
+                <br>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

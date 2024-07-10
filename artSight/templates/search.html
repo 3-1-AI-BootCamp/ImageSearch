@@ -24,16 +24,22 @@
 
                     <div id="img_component_wrapper">
                         {% for row in response %}
-                            <div id="component_{{ forloop.counter }}">
-                                <img class="img" src="{% static 'img/group-3.png' %}" />
-                                {% if row.ImageFileName %}
-                                    <img class="img-2" src="{% static 'img/painting/' %}{{ row.ImageFileName }}.jpg" alt="{{ row.ArtTitle_kor }}" />
-                                {% endif %}
-                                <p class="text-wrapper-4">{{ row.ArtTitle_kor }}</p>
-                                <div class="text-wrapper-5">{{ row.ArtistName_kor }}</div>
-                            </div>
+                        <div id="component_{{ forloop.counter }}">
+                          <img class="img" src="{% static 'img/group-3.png' %}" onclick="openImagePopup('{% static 'img/group-3.png' %}', '{{ row.ArtTitle_kor }}')" />
+                          {% if row.ImageFileName %}
+                          <img class="img-2" src="{% static 'img/painting/' %}{{ row.ImageFileName }}.jpg" alt="{{ row.ArtTitle_kor }}" onclick="openImagePopup('{% static 'img/painting/' %}{{ row.ImageFileName }}.jpg', '{{ row.ArtTitle_kor }}')" />
+                          {% endif %}
+                          <p class="text-wrapper-4">{{ row.ArtTitle_kor }}</p>
+                          <div class="text-wrapper-5">{{ row.ArtistName_kor }}</div>
+                        </div>
                         {% endfor %}
-                    </div>                    
+                    </div>
+                      
+                    <!-- JavaScript 파일 참조 -->
+                    <script src="{% static 'js/imagePopup.js' %}"></script>    
+                    
+                   
+
                     
                     {% comment %} mysql의 바이너리 데이터를 읽어와서 디코딩 해서 출력하는 html {% endcomment %}
                     {% comment %} <div id="img_component_wrapper">
@@ -53,7 +59,7 @@
 
 
                 </div>
-                <div class="hot" id="hot">HOT</div>
+                {% comment %} <div class="hot" id="hot">HOT</div> {% endcomment %}
             </div>
 
             {% comment %} 검색 바 {% endcomment %}
@@ -79,15 +85,15 @@
             <p class="search-IT"><span class="text-wrapper-8">Search.</span> <span class="text-wrapper-9">ART</span></p>
 
             <div class="group-7" id="group-7">
-                <div class="frame-2" id="frame-2">
+                {% comment %} <div class="frame-2" id="frame-2">
                     <img class="img-3" src="{% static 'img/user.svg' %}" />
                     <div class="login">LOGIN</div>
-                </div>
-                <div class="text-wrapper-10">Write a sentence about the work of art you want to find!</div>
-                <div class="frame-3" id="frame-3">
+                </div> {% endcomment %}
+                <div class="text-wrapper-10">Find art in sentences</div>
+                {% comment %} <div class="frame-3" id="frame-3">
                     <img class="img-3" src="{% static 'img/settings.svg' %}" />
                     <div class="login">LOGIN</div>
-                </div>
+                </div> {% endcomment %}
             </div>
         </div>
     </div>

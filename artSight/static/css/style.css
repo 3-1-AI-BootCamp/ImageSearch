@@ -177,7 +177,7 @@
     border-radius: 20px;
   }
   
-  .hot {
+  /* .hot {
     position: absolute;
     top: 35px;
     left: 673px;
@@ -187,7 +187,7 @@
     font-size: 14px;
     letter-spacing: 0;
     line-height: normal;
-  }
+  } */
   
   .overlap-group-wrapper {
     position: absolute;
@@ -307,6 +307,7 @@
     height: 48px;
     top: 40px;
     left: 40px;
+    justify-content: center;
   }
   
   .frame-2 {
@@ -341,7 +342,7 @@
   }
   
   .text-wrapper-10 {
-    position: absolute;
+    /* position: absolute; */
     top: 10px;
     left: 755px;
     font-family: "Montserrat", Helvetica;
@@ -366,3 +367,4 @@
     position: absolute;
   }
   
+

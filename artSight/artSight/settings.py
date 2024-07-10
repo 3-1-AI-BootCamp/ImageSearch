@@ -87,7 +87,7 @@ DATABASES = {
         'NAME': 'art_data',
         'USER': '3,1',
         'PASSWORD': '1234',
-        'HOST': '192.168.1.22',
+        'HOST': '192.168.1.15',
         'PORT': '3306',
         'OPTIONS': {
             'connect_timeout': 3600,
